@@ -597,6 +597,20 @@ a {
   border: 1px solid rgba(244, 63, 94, 0.3);
 }
 
+/* Demo Caption */
+.demo-caption {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  border-left: 2px solid var(--color-border);
+  padding-left: 1rem;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+.demo-caption p {
+  margin: 0;
+  line-height: 1.6;
+}
+
 /* Hero ASCII Canvas */
 #hero-canvas {
   position: absolute;
