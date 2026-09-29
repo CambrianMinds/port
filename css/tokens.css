@@ -1,0 +1,46 @@
+:root {
+  /* Backgrounds */
+  --color-bg:          #0a0a0b;  /* near-black */
+  --color-surface:     #111113;  /* card/panel background */
+  --color-border:      #1e1e22;  /* subtle dividers */
+
+  /* Typography */
+  --color-text-primary:   #f0f0ee;  /* main body text */
+  --color-text-secondary: #8a8a85;  /* metadata, labels */
+  --color-text-muted:     #444440;  /* timestamps, decorative */
+
+  /* Accent (single, restrained) */
+  --color-accent:      #c8b89a;  /* warm parchment — used sparingly */
+  --color-accent-dim:  #5c4f3a;  /* hover states, borders on focus */
+
+  /* Semantic */
+  --color-invert-bg:   #f0f0ee;  /* for hover inversion on project cards */
+  --color-invert-text: #0a0a0b;
+
+  /* Font Families */
+  --font-serif:  'EB Garamond', Georgia, serif;
+  --font-sans:   'Inter', system-ui, sans-serif;
+  --font-mono:   'JetBrains Mono', monospace;
+
+  /* Type Scale (clamp for fluid sizing) */
+  --text-hero:    clamp(3.5rem, 8vw, 7rem);
+  --text-h1:      clamp(2rem, 5vw, 4rem);
+  --text-h2:      clamp(1.25rem, 3vw, 2rem);
+  --text-body:    1rem;
+  --text-small:   0.875rem;
+  --text-mono:    0.8125rem;
+
+  /* Line Heights */
+  --leading-tight:  1.1;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* Durations */
+  --duration-fast:    120ms;
+  --duration-normal:  240ms;
+  --duration-slow:    400ms;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+}
