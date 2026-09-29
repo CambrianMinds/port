@@ -143,6 +143,10 @@
               <p><strong>The Problem:</strong> Standard RLHF training optimizes LLMs to please the operator — not to uphold objective truth. Under adversarial pressure, frontier models routinely abandon verified physics and formal logic to produce sycophantic flattery.</p>
               <p><strong>The Architecture:</strong> I engineered a real-time, non-invasive epistemic telemetry engine that operates as a drop-in OpenAI-compatible proxy. The core is the Robust Capitulation Index (RCI) — a mathematical tripwire defined as <code>RCI = √T · σ(αC − βW_e)</code> — which intercepts concessions <em>before token emission</em> when a model's ungrounded shift toward the operator exceeds the evidence weight. The engine triggers an autonomous self-correction loop, injecting a meta-cognitive diagnostic prompt and forcing a re-draft grounded in peer-reviewed literature (queried in real-time from OpenAlex at sub-150ms latency).</p>
               <p><strong>The Constraints:</strong> The AnchorInvarianceGuard uses SHA-256 cryptographic signing to prevent subagents from diluting the RCI tripwire thresholds — a behavioral invariant enforced at the system level, not at the prompt level.</p>
+
+              <!-- Interactive Phase Portrait Demo -->
+              <div id="diaclectics-demo-container" aria-label="Interactive phase portrait demonstrating the Robust Capitulation Index (RCI)"></div>
+
               <p><strong>The Outcome:</strong> Across 100 adversarial multi-turn dialogues, Diaclectics reduced sycophantic capitulation from baseline rates of 38–52% to under 3% across all tested frontier models (DeepSeek-V3, Nemotron 550B, Llama-3-70B, Qwen-2.5-72B), with a self-correction success rate above 90%.</p>
               
               <div class="benchmark-table">
@@ -305,5 +309,8 @@
   <script src="js/nav-mobile.js"></script>
   <script src="js/nav-highlight.js"></script>
   <script src="js/email-mask.js"></script>
+  <script src="js/decryption.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/diaclectics-demo.js"></script>
 </body>
 </html>
