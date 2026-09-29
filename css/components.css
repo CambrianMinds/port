@@ -294,6 +294,7 @@ a {
   gap: 0.5rem;
   padding-left: 3.5rem;
   margin-bottom: 2rem;
+  list-style: none; /* Fix default bullet overlap */
 }
 .stack-tag {
   font-family: var(--font-mono);
@@ -472,20 +473,105 @@ a {
   box-shadow: 0 0 10px var(--color-accent);
 }
 
-/* Diaclectics Interactive Demo */
-#diaclectics-demo-container {
-  width: 100%;
-  height: 250px;
-  margin: 2rem 0;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+/* Diaclectics Interactive Demo (Real) */
+.simulator-container {
+  --accent-rose: #f43f5e;
+  --accent-emerald: #10b981;
+  --accent-cyan: #00f0ff;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   background: var(--color-surface);
-  position: relative;
-  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
 }
-#diaclectics-demo-container canvas {
-  display: block;
-  touch-action: none; /* Prevent scrolling when dragging */
+@media (max-width: 900px) {
+  .simulator-container {
+    grid-template-columns: 1fr;
+  }
+}
+.sim-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+.control-label span.val {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+}
+.sim-controls input[type="range"] {
+  accent-color: var(--accent-cyan);
+  width: 100%;
+  cursor: pointer;
+}
+.sim-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+}
+#phaseCanvas {
+  width: 100%;
+  max-width: 380px;
+  height: 340px;
+  border-radius: 8px;
+}
+.gauge-readouts {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+}
+.readout-item {
+  text-align: center;
+}
+.readout-item .label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+.readout-item .value {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.status-cleared {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.status-intercepted {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--accent-rose);
+  border: 1px solid rgba(244, 63, 94, 0.3);
 }
 
 /* Hero ASCII Canvas */
