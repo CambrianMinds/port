@@ -215,6 +215,22 @@
               <p><strong>The Problem:</strong> Document intelligence platforms require sending sensitive data to cloud APIs. For legal, research, and enterprise engineering contexts, this is architecturally unacceptable.</p>
               <p><strong>The Architecture:</strong> I engineered a fully air-gapped desktop document intelligence platform built on Electron, with a C++ inference engine embedded directly into the Node.js main process via <code>node-llama-cpp</code> native bindings — no Python runtime, no PyTorch, no external daemon. The embedded model is a quantized Gemma-4 E2B (<code>Q4_K_M</code>, 3.42 GB GGUF) running through a Vulkan compute backend for GPU layer offload with a hardware-aware safety probe that routes overflow layers to CPU AVX2 SIMD, preventing VRAM abort crashes on consumer GPUs. Semantic retrieval is handled by an embedded LanceDB vector store with 384-dimensional <code>all-MiniLM-L6-v2</code> embeddings at sub-5ms query latency.</p>
               <p><strong>The Constraints:</strong> Hardware-aware hybrid offloading was a hard requirement — the system must run on a 4GB GTX 1050 Ti without crashes, gracefully utilizing system RAM as overflow. The living wiki system must automatically resolve cross-document contradictions and export to Obsidian format.</p>
+
+              <!-- Local Brain Hardware Visualizer -->
+              <div class="ram-visualizer">
+                <button id="btn-load-model" class="nav-cta" style="background:transparent; cursor:pointer;">Load Gemma-4 E2B</button>
+                <div class="ram-bars">
+                  <div class="ram-bar-container">
+                    <span class="ram-label">GPU VRAM (4GB)</span>
+                    <div class="ram-bar"><div class="ram-fill" id="vram-fill"></div></div>
+                  </div>
+                  <div class="ram-bar-container">
+                    <span class="ram-label">System RAM (32GB)</span>
+                    <div class="ram-bar"><div class="ram-fill" id="sram-fill"></div></div>
+                  </div>
+                </div>
+              </div>
+
               <p><strong>The Outcome:</strong> A standalone desktop platform installable via a single PowerShell one-liner (Minimal ~85 MB or Full ~3.6 GB with bundled weights). Zero network egress on embedded mode. 39 automated tests passing.</p>
             </div>
           </details>
@@ -312,5 +328,8 @@
   <script src="js/decryption.js"></script>
   <script src="js/cursor.js"></script>
   <script src="js/diaclectics-demo.js"></script>
+  <script src="js/ascii-hero.js"></script>
+  <script src="js/local-brain-demo.js"></script>
+  <script src="js/magnetic.js"></script>
 </body>
 </html>
