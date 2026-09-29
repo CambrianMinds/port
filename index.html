@@ -67,6 +67,7 @@
     <section id="about" class="about section">
       <div class="container grid-2">
         <div class="about-quote" data-reveal>
+          <img src="assets/profile.webp" alt="Justin Bogner Profile" class="profile-img">
           <blockquote>
             "The architect doesn't swing the hammer.<br>
             They define what gets built — and why."
@@ -240,6 +241,11 @@
               <p><strong>The Problem:</strong> Pro se expungement petitions in Indiana require parsing a complex 5-tier statutory eligibility matrix (IC § 35-38-9), calculating waiting periods across multiple jurisdictions, and generating 10 court-ready pleadings in strict Indiana Trial Rule 10 format. The people who need this most cannot afford a lawyer.</p>
               <p><strong>The Architecture:</strong> I designed a zero-cloud architecture with a hard constraint: no PII ever leaves the client. The system intercepts Indiana's Odyssey court portal (MyCase) by hooking directly into the Knockout.js MVVM observable layer — bypassing fragile DOM selectors — to extract case data before it renders. A dual-environment statutory rules engine (IIFE supporting both browser and CommonJS/Jest runtimes) evaluates eligibility across all five statutory tiers with integer-day precision, automatically extending deadline calculations per Indiana Trial Rule 6(A) for weekends and court holidays. <code>pdf-lib</code> compiles court-ready pleadings entirely in-memory, including bifurcated relief sections that prevent improper civil rights restoration language from invalidating dismissed-charge seals.</p>
               <p><strong>The Constraints:</strong> The system enforces mandatory pre-flight guards before compilation — 92-county search verification, ISP criminal history check, zero balance on fines, and zero pending charges — enforced in both the UI and CI pipeline (<code>npm run test:disclaimers</code>). A byte-for-byte parity check ensures the Chrome extension and PWA deploy from identical logic.</p>
+              
+              <div class="project-screenshot">
+                <img src="assets/expunger-pro.webp" alt="Indiana Expungement Assistant Interface" loading="lazy">
+              </div>
+
               <p><strong>The Outcome:</strong> Deployed as both a Chrome Manifest V3 extension and a standalone PWA. Full Spanish localization with 100% key parity, validated by automated i18n tests. Zero cloud infrastructure. Zero telemetry. Zero cost to run.</p>
             </div>
           </details>
@@ -273,19 +279,8 @@
               <p><strong>The Architecture:</strong> I engineered a fully air-gapped desktop document intelligence platform built on Electron, with a C++ inference engine embedded directly into the Node.js main process via <code>node-llama-cpp</code> native bindings — no Python runtime, no PyTorch, no external daemon. The embedded model is a quantized Gemma-4 E2B (<code>Q4_K_M</code>, 3.42 GB GGUF) running through a Vulkan compute backend for GPU layer offload with a hardware-aware safety probe that routes overflow layers to CPU AVX2 SIMD, preventing VRAM abort crashes on consumer GPUs. Semantic retrieval is handled by an embedded LanceDB vector store with 384-dimensional <code>all-MiniLM-L6-v2</code> embeddings at sub-5ms query latency.</p>
               <p><strong>The Constraints:</strong> Hardware-aware hybrid offloading was a hard requirement — the system must run on a 4GB GTX 1050 Ti without crashes, gracefully utilizing system RAM as overflow. The living wiki system must automatically resolve cross-document contradictions and export to Obsidian format.</p>
 
-              <!-- Local Brain Hardware Visualizer -->
-              <div class="ram-visualizer">
-                <button id="btn-load-model" class="nav-cta" style="background:transparent; cursor:pointer;">Load Gemma-4 E2B</button>
-                <div class="ram-bars">
-                  <div class="ram-bar-container">
-                    <span class="ram-label">GPU VRAM (4GB)</span>
-                    <div class="ram-bar"><div class="ram-fill" id="vram-fill"></div></div>
-                  </div>
-                  <div class="ram-bar-container">
-                    <span class="ram-label">System RAM (32GB)</span>
-                    <div class="ram-bar"><div class="ram-fill" id="sram-fill"></div></div>
-                  </div>
-                </div>
+              <div class="project-screenshot">
+                <img src="assets/local-brain.webp" alt="Local Brain Desktop Interface" loading="lazy">
               </div>
 
               <p><strong>The Outcome:</strong> A standalone desktop platform installable via a single PowerShell one-liner (Minimal ~85 MB or Full ~3.6 GB with bundled weights). Zero network egress on embedded mode. 39 automated tests passing.</p>
@@ -318,6 +313,11 @@
             <div class="case-study-body">
               <p><strong>The Design Philosophy:</strong> A TUI should operate as a precision instrument, not a wrapper. Each project in this suite enforces a strict zero-dependency constraint: the system must function completely offline, with no package manager and no internet access, operating purely on what the host runtime provides natively.</p>
               <p><strong>xAI TTS Studio</strong> is a 3-panel terminal studio built on Textual for synthesizing expressive audio via the xAI API. It features dynamic voice discovery, an interactive speech tag palette with one-click cursor insertion and text wrapping, asynchronous background synthesis workers, dry-run simulation, and MP3 export — all within a keyboard-driven TUI with full dark mode.</p>
+              
+              <div class="project-screenshot">
+                <img src="assets/base64-tui.webp" alt="CambrianSystems Terminal User Interface" loading="lazy">
+              </div>
+
               <p><strong>CambrianSystems TUI</strong> is a self-contained data integrity and encoding workstation distributed as a single PowerShell script (<code>cambriansystems-tui.ps1</code>). It bundles 20+ utilities across 5 operational divisions — Base64/URL/Hex encoding, JWT inspection with visual lifetime meters, multi-hash grid (MD5 through SHA-512), image format transcoding, GZip compression, hex dump visualization, digital steganography, and in-terminal QR code generation — all without <code>npm</code>, <code>pip</code>, or internet access. The entire system uses only assemblies natively present in the Windows .NET runtime, with an inline C# block compiled at runtime for mouse input and QR encoding.</p>
               <p><strong>gh-tui</strong> extends the official GitHub CLI with a terminal UI for exploring repositories, reading issues and PRs in rendered Markdown, and performing bulk actions — all without memorizing <code>gh</code> subcommand syntax.</p>
             </div>
@@ -387,7 +387,6 @@
   <script src="js/cursor.js"></script>
   <script src="js/diaclectics-demo.js"></script>
   <script src="js/ascii-hero.js"></script>
-  <script src="js/local-brain-demo.js"></script>
   <script src="js/magnetic.js"></script>
 </body>
 </html>
