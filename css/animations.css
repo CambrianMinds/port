@@ -1,0 +1,39 @@
+/* Scroll Reveal Animations */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--duration-slow) var(--ease-out-expo),
+              transform var(--duration-slow) var(--ease-out-expo);
+}
+
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay for sibling project rows */
+.project-row:nth-of-type(1)[data-reveal] { transition-delay: 0ms; }
+.project-row:nth-of-type(2)[data-reveal] { transition-delay: 80ms; }
+.project-row:nth-of-type(3)[data-reveal] { transition-delay: 160ms; }
+.project-row:nth-of-type(4)[data-reveal] { transition-delay: 240ms; }
+.project-row:nth-of-type(5)[data-reveal] { transition-delay: 320ms; }
+
+/* Scroll Indicator Fade */
+.scroll-indicator {
+  opacity: 1;
+  transition: opacity var(--duration-normal) var(--ease-out-expo);
+  animation: bounce 2s infinite var(--ease-in-out);
+}
+.scroll-indicator.hidden {
+  opacity: 0;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
